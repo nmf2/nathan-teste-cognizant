@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "webpack --watch --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "docker:build": "docker build . -t nathan-race-stats",
+    "docker:run": "docker run -p 3000:3000 nathan-race-stats",
+    "docker": "npm run docker:build && npm run docker:run"
   },
   "repository": {
     "type": "git",

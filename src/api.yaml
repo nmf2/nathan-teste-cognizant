@@ -20,16 +20,49 @@ paths:
               schema:
                 type: object
                 properties:
-                  position:
+                  herosStats:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                      name:
+                        type: string
+                      position:
+                        type: number
+                      bestLap:
+                        type: number
+                      bestLapSpeed:
+                        type: number
+                      totalLaps:
+                        type: number
+                      totalTime:
+                        type: string
+                      overallAverageSpeed:
+                        type: number
+                  bestOverallLapSpeed:
                     type: number
-                  code:
-                    type: number
-                  name:
-                    type: string
-                  laps:
-                    type: number
-                  time:
-                    type: number
+              example:
+                herosStas:
+                - code: 38
+                  name: Superman
+                  position: 11131183.783
+                  bestLap: 3
+                  bestLapSpeed: 44.334
+                  totalLaps: 4
+                  totalTimeMs: 251578
+                  totalTimeText: '04:11.578'
+                  overallAverageSpeed: 44.24545780235156
+                - code: 2
+                  name: Mercúrio
+                  position: 11131150.788
+                  bestLap: 4
+                  bestLapSpeed: 44.118
+                  totalLaps: 4
+                  totalTimeMs: 255153
+                  totalTimeText: '04:15.153'
+                  overallAverageSpeed: 43.6253964797592
+                bestOverallLapSpeed: 44.334
+
         400:
           $ref: "#/components/responses/InvalidInput"
           
