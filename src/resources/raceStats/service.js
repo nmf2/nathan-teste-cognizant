@@ -38,6 +38,8 @@ export default class Service {
         position: 0,
         code: parseInt(code),
         name,
+        bestLap: 0,
+        bestLapSpeed: 0,
         laps: 0,
         time: 0,
       };
@@ -45,7 +47,9 @@ export default class Service {
 
     for (const lap of csv) {
       const hero = lap["Super-Heroi"];
-      const speed = parseFloat(lap["Velocidade média da volta"]);
+      const speed = parseFloat(
+        lap["Velocidade média da volta"].replace(",", ".")
+      );
       const timeText = lap["Tempo Volta"];
       const lapNumber = parseFloat(lap["No Volta"]);
 
@@ -62,17 +66,24 @@ export default class Service {
       const currentHeroStats = statsMap.get(hero);
 
       // Assuming the speed unit is distance per miliseconds
+      if (currentHeroStats.bestLapSpeed < speed) {
+        currentHeroStats.bestLapSpeed = speed;
+        currentHeroStats.bestLap = lapNumber;
+      }
       currentHeroStats.position += speed * time;
-      currentHeroStats.laps = lapNumber;
       currentHeroStats.time += time;
+      currentHeroStats.laps++;
     }
 
     const stats = [];
 
     for (const stat of statsMap.values()) {
       const dateDuration = new Date(stat.time);
-      stat.time = `${dateDuration.getMinutes()}:${dateDuration.getSeconds()}.${dateDuration.getMilliseconds()}`;
-      stats.push(stat)
+      const minutes = `${dateDuration.getMinutes()}`.padStart(2, "0");
+      const seconds = `${dateDuration.getSeconds()}`.padStart(2, "0");
+      const ms = `${dateDuration.getMilliseconds()}`.padStart(3, "0");
+      stat.time = `${minutes}:${seconds}.${ms}`;
+      stats.push(stat);
     }
 
     return stats;
