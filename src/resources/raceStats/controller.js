@@ -1,19 +1,17 @@
 import Service from './service'
 import UserInputError from '@/errors/userInputError'
 
-
 class Controller {
-
-  constructor() {
+  constructor () {
     this.service = new Service()
   }
 
   /**
-   * 
-   * @param {import("express").Request} req 
-   * @param {import("express").Response} res 
+   *
+   * @param {import("express").Request} req
+   * @param {import("express").Response} res
    */
-  async raceStats(req, res) {
+  async raceStats (req, res) {
     try {
       res.status(200).json(await this.service.getStats())
     } catch (error) {

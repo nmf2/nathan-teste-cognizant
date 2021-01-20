@@ -1,7 +1,7 @@
-import { Router } from "express";
-import controller from "./controller";
+import { Router } from 'express'
+import controller from './controller'
 
 export default Router({ mergeParams: true }).get(
-  "/stats",
+  '/stats',
   controller.raceStats.bind(controller)
-);
+)

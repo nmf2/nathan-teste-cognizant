@@ -1,11 +1,11 @@
 import UserInputError from '@/errors/userInputError'
 
 export default class Service {
-  _image
-  _valueToCount
+  _image;
+  _valueToCount;
   /**
    * Create the service initializing the image
-   * @param {number[][]} image 
+   * @param {number[][]} image
    */
   constructor (image) {
     if (!image) {
@@ -17,11 +17,11 @@ export default class Service {
 
   /**
    * Build a map that has how many times each value in the matrix happens. Since
-   * the size of the matrix is MxN, this operation will take O(MN) time. 
-   * @param {number[][]} image 
+   * the size of the matrix is MxN, this operation will take O(MN) time.
+   * @param {number[][]} image
    * @returns {Map<number, number>}
    */
-  #buildImageMap(image) {
+  #buildImageMap (image) {
     /** @type {Map<number, number>} */
     const valueToCount = new Map()
     for (const line of image) {
@@ -35,20 +35,20 @@ export default class Service {
 
   /**
    * Returns the count of how many times one value appears in the image
-   * @param {number} value 
+   * @param {number} value
    * @returns {number}
    */
-  getCount(value) {
+  getCount (value) {
     if (isNaN(value)) {
       throw new UserInputError('Given value is not a number')
     }
     return this._valueToCount.get(value) || 0
   }
-  
+
   /**
    * Returns an object containing how many times each value in the given values
    * array appears in the image.
-   * @param {number[]} values 
+   * @param {number[]} values
    * @returns {Object<string, number>}
    */
   getBulkCount (values) {
