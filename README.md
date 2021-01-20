@@ -2,14 +2,18 @@
 Este repositório resolve o teste de desenvolvimento da cognizant
 
 # Pré requisitos
- * Node.js
- * npm
+ É possível executar o projeto diretamente com o Node.js 14 ou com o Docker. 
+ Instale um dos dois dependendo da forma como queira executar. Links úteis:
+ * (https://nodejs.org/)[https://nodejs.org/]
+ * (https://docs.docker.com/get-docker/)[https://docs.docker.com/get-docker/]
+
 # Primeiros Passos
 Clonar o repositório: 
 ```
 git clone https://github.com/nmf2/nathan-teste-cognizant.git
 ```
-
+___
+## Para rodar com o Node.js 14
 Instalar as dependências do npm:
 ```
 npm install
@@ -20,6 +24,13 @@ Rodar o server:
 npm run dev
 ```
 
+## Para rodar com o Docker
+Executar build da imagem e rodar o container:
+```
+npm run docker
+```
+
+____
 Assim que o server estiver pronto o console emitirá  a seguinte mensagem:
 ```
 Server up and runnig on port 3000
@@ -46,7 +57,7 @@ Por exemplo: ![Exemplo](https://imgur.com/oY4LwnP.png)
 │   └── server.js
 ├── node_modules
 ├── public                      -- Pasta reservada para assets necessários para 
-                                   página de documentação "/api-explorer"
+|                                  página de documentação "/api-explorer"
 ├── src                         -- Código fonte
 │   ├── resources               -- Definição de recursos
 │   │   ├── image
@@ -54,12 +65,12 @@ Por exemplo: ![Exemplo](https://imgur.com/oY4LwnP.png)
 │   │   │   ├── service.js      -- Lógica para calcular valores
 │   │   │   └── router.js       -- Rota do endpoint de imagem
 │   │   └── messages
-│   │   │   ├── controller.js   -- Tratamento de erros e resposta da requisição
+│   │       ├── controller.js   -- Tratamento de erros e resposta da requisição
 │   │       ├── service.js      -- Lógica para ler o log da corrida e gerar as 
-                                   estatísticas
+│   │       │                      estatísticas
 │   │       └── router.js       -- Rotas dos endpoints de corrida de super-herói
 │   ├── api.yaml                -- Documentação da API seguindo o OpenAPI 3 
-                                   (i.e. evolução do Swagger 2.0)
+│   │                              (i.e. evolução do Swagger 2.0)
 │   ├── index.js                -- Inicialização do server e dos recursos
 │   └── routes.js               -- Definição de rotas base para os recursos
 ├── Dockerfile
