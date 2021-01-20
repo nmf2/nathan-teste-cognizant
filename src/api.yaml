@@ -20,16 +20,28 @@ paths:
               schema:
                 type: object
                 properties:
-                  position:
+                  herosStats:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                      name:
+                        type: string
+                      position:
+                        type: number
+                      bestLap:
+                        type: number
+                      bestLapSpeed:
+                        type: number
+                      totalLaps:
+                        type: number
+                      totalTime:
+                        type: string
+                      overallAverageSpeed:
+                        type: number
+                  bestOverallLapSpeed:
                     type: number
-                  code:
-                    type: number
-                  name:
-                    type: string
-                  laps:
-                    type: number
-                  time:
-                    type: number
+
         400:
           $ref: "#/components/responses/InvalidInput"
           
