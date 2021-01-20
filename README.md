@@ -45,16 +45,21 @@ Por exemplo: ![Exemplo](https://imgur.com/oY4LwnP.png)
 │   ├── api.yaml
 │   └── server.js
 ├── node_modules
-├── public                      -- Pasta reservada para assets necessários para página de documentação "/api-explorer"
+├── public                      -- Pasta reservada para assets necessários para 
+                                   página de documentação "/api-explorer"
 ├── src                         -- Código fonte
 │   ├── resources               -- Definição de recursos
 │   │   ├── image
-│   │   │   ├── controller.js   -- Lógica para calcular valores
+│   │   │   ├── controller.js   -- Tratamento de erros e resposta da requisição
+│   │   │   ├── service.js      -- Lógica para calcular valores
 │   │   │   └── router.js       -- Rota do endpoint de imagem
 │   │   └── messages
-│   │       ├── controller.js   -- Lógica para ler o log da corrida
+│   │   │   ├── controller.js   -- Tratamento de erros e resposta da requisição
+│   │       ├── service.js      -- Lógica para ler o log da corrida e gerar as 
+                                   estatísticas
 │   │       └── router.js       -- Rotas dos endpoints de corrida de super-herói
-│   ├── api.yaml                -- Documentação da API seguindo o padrão OpenAPI 3
+│   ├── api.yaml                -- Documentação da API seguindo o OpenAPI 3 
+                                   (i.e. evolução do Swagger 2.0)
 │   ├── index.js                -- Inicialização do server e dos recursos
 │   └── routes.js               -- Definição de rotas base para os recursos
 ├── Dockerfile
