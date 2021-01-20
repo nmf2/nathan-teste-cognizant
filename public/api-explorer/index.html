@@ -1,0 +1,89 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cognizant API</title>
+  <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+  <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+  <style>
+    html {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      background: #fafafa;
+    }
+
+    .topbar {    
+      background-color: #fff !important;
+      border-bottom: 1px solid #cccccc;
+    }
+    .topbar-wrapper img[alt="Swagger UI"] {    
+      display: none;
+    }
+
+    .topbar-wrapper > a {
+      background-image: url("/api-explorer/favicon-32x32.png") !important;
+      content: 'Cognizant';
+      color: #fff;
+      visibility: visible;
+      display: block;
+      position: absolute;
+      padding: 0px;
+      width: 35px;
+      height: 35px;
+      top: 10px;
+    }
+    .topbar-wrapper > .download-url-wrapper {
+      margin-left: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="swagger-ui"></div>
+
+  <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
+  <script src="./swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+  <script>
+    window.onload = function () {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: window.location.origin + "/spec",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        defaultModelsExpandDepth: 0,
+        // docExpansion: ['none'],
+        tagsSorter: 'alpha',
+        operationsSorter: 'alpha',
+        syntaxHighlight: true,
+        persistAuthorization: true,
+        layout: "StandaloneLayout"
+      })
+      // End Swagger UI call region
+
+      window.ui = ui
+    }
+  </script>
+</body>
+
+</html>

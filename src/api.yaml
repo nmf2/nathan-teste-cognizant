@@ -1,0 +1,104 @@
+openapi: "3.0.2"
+info:
+  title: Cognizant API
+  version: "1.0"
+servers:
+  - url: http://localhost:3000/
+paths:
+  /super-hero-race/stats:
+    get:
+      tags:
+        - Super Hero Race
+      description: Returns statistics on a superhero race
+      responses:
+        200:
+          description: |
+            The request was sucessful. Returns an object with the race's
+            statistics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  position:
+                    type: number
+                  code:
+                    type: number
+                  name:
+                    type: string
+                  laps:
+                    type: number
+                  time:
+                    type: number
+        400:
+          $ref: "#/components/responses/InvalidInput"
+          
+        500:
+          $ref:  "#/components/responses/InternalError"
+
+  /image/bulk/count-values:
+    post:
+      tags:
+        - Image
+      description: Calculates how many times the requested values appear in the image
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+      responses:
+        200:
+          description: |
+            The request was sucessful. Returns an object with how many times
+            each requested value appeared in the image.
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+              example:
+                "0": 0
+                "1": 1
+                "2": 2
+                "100": 0
+        400:
+          $ref: "#/components/responses/InvalidInput"
+
+        500:
+          $ref: "#/components/responses/InternalError"
+          
+
+components:
+  responses:
+    InternalError:
+      description: The request failed due to an internal development error
+      content:
+        application/json:
+          schema:
+            type: string
+            example: Internal Server Error
+    InvalidInput:
+      description: The request failed due to user invalid input
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - type: object
+                properties:
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: string
+                        message:
+                          type: string
+                        errorCode:
+                          type: string
+              - type: string
