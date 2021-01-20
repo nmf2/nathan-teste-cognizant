@@ -1,7 +1,7 @@
 import chai from 'chai'
 import Service from './service'
 
-describe('Race Stats Service', () => {
+describe('Image Service', () => {
   describe('Service initialization', () => {
     it('should throw error when no image is supplied', done => {
       chai
