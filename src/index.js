@@ -43,13 +43,6 @@ app.use(
 
 routes(app);
 
-databaseConnected
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Server up and runnig on port ${port}`);
-    });
-  })
-  .catch((err) => {
-    console.error(err)
-    console.log(`Check DB connection and restart server... `);
-  });
+app.listen(port, () => {
+  console.log(`Server up and runnig on port ${port}`);
+});
