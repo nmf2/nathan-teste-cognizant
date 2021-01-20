@@ -36,6 +36,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/api.yaml"},
+        { from: "src/resources/raceStats/defaultLog.csv"},
       ],
       options: {
         concurrency: 100,

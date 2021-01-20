@@ -16,11 +16,6 @@ module.exports = merge(common, {
   externals: [nodeExternals({})],
   plugins: [
     new NodemonPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [
-        "./node_modules/swagger-ui-dist/",
-      ],
-    }),
     new webpack.BannerPlugin({
       banner: 'require("source-map-support").install();',
       raw: true,
