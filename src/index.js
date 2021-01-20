@@ -45,4 +45,5 @@ routes(app);
 
 app.listen(port, () => {
   console.log(`Server up and runnig on port ${port}`);
+  console.log(`Documentation at http://localhost:${port}/api-explorer`);
 });
